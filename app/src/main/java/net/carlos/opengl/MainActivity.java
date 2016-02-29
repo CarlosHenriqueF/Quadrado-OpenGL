@@ -6,10 +6,15 @@ import net.carlos.opengl.game.GameView;
 
 public class MainActivity extends Activity 
 {
+	 private GameView game;
+	 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(new GameView(this));
+				
+				this.game = new GameView(this);
+				
+        setContentView(game);
     }
 }
