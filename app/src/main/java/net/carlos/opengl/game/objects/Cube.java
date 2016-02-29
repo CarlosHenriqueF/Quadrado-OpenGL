@@ -11,20 +11,20 @@ public class Cube implements Geometric
 	 private ByteBuffer colorBuffer;
 	 private FloatBuffer verticesBuffer;
 	 private ByteBuffer indexBuffer;
-	 
+
 	 public Cube()
 	 {
 			byte maxColor = (byte) 255;
-			
-			
+
+
 			float[] vertices = 
 			{
 				 -1.0f, -1.0f,
-				  1.0f, -1.0f,
+				 1.0f, -1.0f,
 				 -1.0f,  1.0f,
-				  1.0f,  1.0f
+				 1.0f,  1.0f
 			};
-			
+
 			// Aqui, você pode mudar as cores do quadrado
 			byte[] colors = 
 			{
@@ -33,29 +33,29 @@ public class Cube implements Geometric
 				 maxColor, maxColor, 0, maxColor,
 				 0, 0,     maxColor,    maxColor
 			};
-			
+
 			byte[] indices = 
 			{
 				 0, 3, 1,
 				 0, 2, 3
 			};
-			
+
 			ByteBuffer bb = ByteBuffer.allocateDirect(vertices.length * 4);
 			bb.order(ByteOrder.nativeOrder());
-			
+
 			verticesBuffer = bb.asFloatBuffer();
 			verticesBuffer.put(vertices);
 			verticesBuffer.position(0);
-			
+
 			colorBuffer = ByteBuffer.allocateDirect(colors.length);
 			colorBuffer.put(colors);
 			colorBuffer.position(0);
-			
+
 			indexBuffer = ByteBuffer.allocateDirect(indices.length);
 			indexBuffer.put(indices);
 			indexBuffer.position(0);
 	 }
-	 
+
 	 @Override
 	 public void draw(GL10 gl)
 	 {
@@ -66,5 +66,5 @@ public class Cube implements Geometric
 			                  indexBuffer);
 			gl.glFrontFace(GL10.GL_CCW);
 	 }
-	 
+
 }
